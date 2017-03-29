@@ -2,6 +2,9 @@
 
 # usage: cvtopdf.sh [OPTS] NAME 
 
-"$(dirname "$0")"/combinecv.sh "${@: -1}"
-pdflatex ${@:1:$(($#-1))} ${@: -1}.tex
-pdflatex ${@:1:$(($#-1))} ${@: -1}.tex
+NAME="${@: -1}"
+OPTS=${@:1:$(($#-1))}
+TEX="${TEX:-pdflatex} $OPTS"
+
+"$(dirname "$0")"/combinecv.sh "$NAME"
+$TEX "$NAME.tex" && $TEX "$NAME.tex"
