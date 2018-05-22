@@ -17,7 +17,7 @@ cat "$NAME.cv" | while read LINE; do
 			cat "$INC/${STYLE}post.tex" >> "$NAME.tex"
 		fi
 		SEC="${LINE:2}"
-		echo -e "\n\n\\section*{$(head -n1 "$SEC/$SEC")}" >> "$NAME.tex"
+		echo -e "\n\n\\section{$(head -n1 "$SEC/$SEC")}\n\\label{sec:$SEC}\n" >> "$NAME.tex"
 		STYLE="$(tail -n1 "$SEC/$SEC")"
 		if [ -e "$INC/${STYLE}pre.tex" ]; then
 			cat "$INC/${STYLE}pre.tex" >> "$NAME.tex"
