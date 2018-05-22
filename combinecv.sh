@@ -28,7 +28,7 @@ cat "$NAME.cv" | while read LINE; do
 		fi
 	else if [[ "$LINE" != "" ]]; then
 		case "$STYLE" in
-			table)
+			table|densetable)
 				head -n1 "$SEC/$LINE.tex" >> "$NAME.tex"
 				echo -e "\t&" >> "$NAME.tex"
 				tail -n +2 "$SEC/$LINE.tex" >> "$NAME.tex"
